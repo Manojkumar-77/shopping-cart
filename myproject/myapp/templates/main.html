@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | MyShop{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero py-5 text-center text-white rounded shadow-sm mb-5">
+  <div class="container">
+    <h1 class="display-5 fw-bold mb-3">Welcome to <span class="text-warning">MyShop</span></h1>
+    <p class="lead mb-4">Discover top-quality products, exclusive offers, and amazing deals every day.</p>
+    <a href="#categories" class="btn btn-warning btn-lg shadow-sm fw-semibold px-4">Shop Now</a>
+  </div>
+</section>
+
+<!-- Categories Section -->
+<section id="categories" class="container my-5">
+  <h2 class="text-center mb-4 fw-bold text-dark">Shop by Category</h2>
+  <div class="row g-4">
+    {% for category in categories %}
+      <div class="col-md-4 col-lg-3">
+        <div class="card category-card border-0 shadow-sm h-100 rounded-4 overflow-hidden">
+          <img src="{{ category.image.url }}" class="card-img-top hover-zoom" alt="{{ category.name }}">
+          <div class="card-body text-center">
+            <h5 class="card-title text-primary fw-semibold">{{ category.name }}</h5>
+            <p class="card-text text-muted small">{{ category.description|truncatewords:15 }}</p>
+          </div>
+          <div class="card-footer bg-transparent border-0 text-center">
+            <a href="/products/?category={{ category.id }}" class="btn btn-outline-primary btn-sm px-4">View Products</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center text-muted">No categories found.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

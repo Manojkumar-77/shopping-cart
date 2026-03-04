@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}All Products - MyShop{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+  <h2 class="fw-bold text-center text-primary mb-4">All Products</h2>
+  <div class="row g-4">
+    {% for product in products %}
+      <div class="col-md-4 col-lg-3">
+        <div class="card product-card border-0 shadow-sm h-100 rounded-4 overflow-hidden">
+          <img src="{{ product.product_image.url }}" class="card-img-top hover-zoom" alt="{{ product.name }}">
+          <div class="card-body text-center">
+            <h5 class="card-title text-primary fw-semibold">{{ product.name }}</h5>
+            <p class="text-muted small">{{ product.description|truncatewords:10 }}</p>
+            <p class="mb-1">
+              <span class="text-success fw-bold">₹{{ product.selling_price }}</span>
+              <small class="text-muted text-decoration-line-through">₹{{ product.original_price }}</small>
+            </p>
+          </div>
+          <div class="card-footer bg-transparent border-0 text-center">
+            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary btn-sm px-4 hover-animate">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center text-muted">No products available right now.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

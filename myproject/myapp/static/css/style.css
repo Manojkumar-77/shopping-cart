@@ -1,0 +1,62 @@
+/* Global Styles */
+body {
+  background-color: #f8f9fa;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #007bff, #6610f2);
+  color: white;
+  border-radius: 0 0 50px 50px;
+}
+
+/* Navbar Hover */
+.navbar-nav .nav-link {
+  transition: 0.3s ease;
+  font-weight: 500;
+}
+.navbar-nav .nav-link:hover {
+  color: #ffeb3b;
+  transform: scale(1.1);
+}
+
+/* Card Hover Effects */
+.card {
+  transition: all 0.3s ease;
+  border-radius: 15px;
+  
+}
+.category-card:hover,
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Zoom */
+.image-container {
+  overflow: hidden;
+  border-radius: 15px 15px 0 0;
+}
+.image-container img {
+  transition: transform 0.4s ease;
+}
+.image-container:hover img {
+  transform: scale(1.08);
+}
+
+/* Buttons */
+.btn {
+  border-radius: 50px;
+  transition: 0.3s ease;
+}
+.btn:hover,
+.hover-animate:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+footer {
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}

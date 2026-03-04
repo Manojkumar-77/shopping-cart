@@ -1,0 +1,40 @@
+/* Hero Section Gradient */
+.hero {
+  background: linear-gradient(135deg, #0d6efd, #6610f2);
+  color: white;
+}
+.hero a:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
+/* Card Hover Effects */
+.category-card:hover, .product-card:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transform: translateY(-3px);
+  transition: 0.3s;
+}
+.hover-zoom:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
+/* Button Hover Animation */
+.btn:hover, .hover-animate:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
+/* Sorting Dropdown */
+.form-select-sm {
+  min-width: 140px;
+}
+
+/* Breadcrumb Styling */
+.breadcrumb-item a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+.breadcrumb-item a:hover {
+  text-decoration: underline;
+}

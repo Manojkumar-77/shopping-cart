@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Checkout | MyShop{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center text-primary fw-bold mb-5">Checkout 🛒</h2>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="table-responsive shadow-sm rounded">
+                <table class="table table-bordered align-middle text-center">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Product</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart_items %}
+                        <tr>
+                            <td><img src="{{ item.product.product_image.url }}" style="height:60px;"></td>
+                            <td>{{ item.product.name }}</td>
+                            <td>₹{{ item.product.selling_price }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>₹{{ item.subtotal }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="card shadow-sm p-4">
+                <h4 class="fw-bold text-primary mb-3">Order Summary</h4>
+                <p class="mb-2">Total Items: {{ cart_items|length }}</p>
+                <h5 class="mb-3">Total Amount: ₹{{ total }}</h5>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success btn-lg w-100 hover-animate">Place Order & Pay</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+.hover-animate:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ category.name }} - MyShop{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+  <!-- Breadcrumbs -->
+  <nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ category.name }}</li>
+    </ol>
+  </nav>
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold text-primary">{{ category.name }}</h2>
+  <div class="row g-4">
+    {% for product in products %}
+      <div class="col-md-4 col-lg-3">
+        <div class="card product-card border-0 shadow-sm h-100 rounded-4 overflow-hidden">
+          <img src="{{ product.product_image.url }}" class="card-img-top hover-zoom" alt="{{ product.name }}">
+          <div class="card-body text-center">
+            <h5 class="card-title text-primary fw-semibold">{{ product.name }}</h5>
+            <p class="text-muted small">{{ product.description|truncatewords:10 }}</p>
+            <p class="mb-1">
+              <span class="text-success fw-bold">₹{{ product.selling_price }}</span>
+              <small class="text-muted text-decoration-line-through">₹{{ product.original_price }}</small>
+            </p>
+          </div>
+          <div class="card-footer bg-transparent border-0 text-center">
+            <button class="btn btn-primary btn-sm px-4 hover-animate">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center text-muted">No products available in this category.</p>
+    {% endfor %}
+  </div>
+  <div class="text-center mt-5">
+    <a href="{% url 'home' %}" class="btn btn-outline-secondary px-4">← Back to Home</a>
+  </div>
+</section>
+{% endblock %}

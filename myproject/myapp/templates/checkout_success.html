@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Order Complete | MyShop{% endblock %}
+
+{% block content %}
+<div class="container py-5 text-center">
+    <h2 class="text-success fw-bold mb-3">🎉 Thank You!</h2>
+    <p class="lead mb-4">Your order of ₹{{ total }} has been successfully placed.</p>
+    {% if order %}
+    <p class="mb-3">Order ID: <strong>#{{ order.id }}</strong></p>
+    {% endif %}
+    <a href="{% url 'home' %}" class="btn btn-primary btn-lg hover-animate">Back to Home</a>
+</div>
+{% endblock %}
